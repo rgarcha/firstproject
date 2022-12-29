@@ -141,13 +141,37 @@ namespace firstproject
         }
     }
 
+    class F
+    {
+        public int value { get; set; }
+    }
 
     class Program
     {
+        private static void increment(ref int abc) // ref versus out
+        {
+            abc = abc + 1; // memory location 500
+        }
+        private static void increment(F abc)
+        {
+            abc.value++; // memory location 100
+        }
         static void Main(string[] args) // 100 files
         {
+            // value type and reference type
+            int i = 5; // 100 memory location
+            increment(ref i);
+            Console.WriteLine($"value of i is {i}", i);
 
-                        Ghar obj = new Ghar();
+            F ff = new F();
+            ff.value = 5;// 100 memory location
+            increment(ff);
+            Console.WriteLine($"value of i in ff is {ff.value}");
+
+
+
+            //abstract and interface
+            Ghar obj = new Ghar();
             obj.Mul(1, 2);
             obj.Sum(2, 3);
 
